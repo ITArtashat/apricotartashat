@@ -1,7 +1,7 @@
 const sprite = document.getElementById("sprite");
 
 const costumes = [
-    "Միացիր մեզ Հունիսի 22-ին <br>ժամը 11:00 - 21:00 ",
+    "Միացիր մեզ Հունիսի 22-ին <br>ժամը 11:00-21:00 ",
     "Հասցե՝ Արարատի մարզ, <br> Դվին բնակավայր ",
 ];
 let currentCostume = 1;
@@ -12,6 +12,22 @@ function changeCostume() {
 }
 
 setInterval(changeCostume, 2000);
+
+
+const sprite2 = document.getElementById("sprite2");
+
+const costumes2 = [
+    "Join Us At June 22! <br> 11:00am-09:00pm ",
+    "Location: Dvin Village, <br> Artashat community ",
+];
+let currentCostume2 = 1;
+
+function changeCostume2() {
+    sprite2.innerHTML = `${costumes2[currentCostume2]}`;
+    currentCostume2 = (currentCostume2 + 1) % costumes2.length;
+}
+
+setInterval(changeCostume2, 2000);
 
 const cont_all = document.querySelector(".cont_all");
 const text = document.querySelector(".paragr_text");
@@ -30,7 +46,7 @@ const contenerImg = document.querySelector(".cont_all");
 let i = 0;
 let width;
 if (slider.offsetWidth > 780) {
-    width = slider.offsetWidth / 3;
+    width = slider.offsetWidth / 4;
 } else {
     width = slider.offsetWidth;
 }
@@ -49,13 +65,14 @@ window.addEventListener("resize", changeSlide);
 
 sliderNext.addEventListener("click", function () {
     i++;
+    
     if (i >= images.length) {
         i = 0;
     }
     changWidth();
 
     if (i > 0) {
-        sliderPrev.style.display = `block`;
+        sliderPrev.style.display = `flex`;
     }
 
     if (i == 0) {
@@ -100,23 +117,39 @@ closeBtn.addEventListener("click", function () {
     document.body.style.backgroundColor = "";
 });
 
+
+
+
+
 function openNav() {
-    document.getElementById("mySidenav").style.width = "270px";
-    document.getElementById("main").style.marginLeft = "270px";
+    document.getElementById("mySidenav").style.width = "100%";
+    document.getElementById("main").style.marginRight = "-270px";
+    document.getElementById("log").style.width = "0%";
+    document.getElementById("body").style.overflowY = "hidden";
+
 }
 
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     // document.getElementById("mySidenav").style.height = "0";
-    document.getElementById("main").style.marginLeft = "0";
+    document.getElementById("main").style.marginRight = "0";
+    document.getElementById("log").style.width = "100%";
+    document.getElementById("body").style.overflowY = "scroll";
+
 }
 
 function openLeng() {
     document.getElementById("opts").style.display = "flex";
+    document.getElementById("opts2").style.display = "flex";
     // document.getElementById("main").style.marginTop = "100px";
 }
 
 function closeLeng() {
     document.getElementById("opts").style.display = "none";
+    document.getElementById("opts2").style.display = "flex";
+
     // document.getElementById("main").style.marginTop = "0";
 }
+
+
+
