@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slick Slider Example</title>
+    <!-- Slick CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <style>
+        .slider {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .slick-slide {
+            text-align: center;
+            color: #fff;
+            background: #3498db;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slider">
+    <!-- Slides will be added dynamically -->
+</div>
+
+<!-- Slick Slider JS -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+    // Add slides dynamically
+    function addSlides(contents) {
+        // Append the new slides to the slider
+        var slider = document.querySelector('.slider');
+        contents.forEach(content => {
+            var newSlide = document.createElement('div');
+            newSlide.textContent = content;
+            slider.appendChild(newSlide);
+        });
+
+        // Re-initialize the Slick Slider
+        if (slider.slickInitialized) {
+            slider.slickGoTo(slider.slickSlideCount);
+        } else {
+            initSlider();
+        }
+    }
+
+    // Initialize the Slick Slider
+    function initSlider() {
+        var slider = document.querySelector('.slider');
+        if (!slider.slickInitialized) {
+            slider.classList.add('slick-initialized');
+            slider.slickInitialized = true;
+
+            new Slick(slider, {
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 3,
+                adaptiveHeight: true
+            });
+        }
+    }
